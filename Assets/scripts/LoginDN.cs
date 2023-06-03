@@ -44,7 +44,7 @@ public class LoginDN : MonoBehaviour
 
         if(user.Equals("bao") && pass.Equals("123"))
         {
-            SceneManager.LoadScene("Scenes1");
+            SceneManager.LoadScene("Screen 0");
         }
         else
         {
