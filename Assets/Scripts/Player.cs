@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         //Bắn đạn
         if (Input.GetKeyDown(KeyCode.S))
         {
-            var x = transform.position.x + 2f;
+            var x = transform.position.x + (isRight ? 0.5f : -0.5f);
             var y = transform.position.y;
             var z = transform.position.z;
 
