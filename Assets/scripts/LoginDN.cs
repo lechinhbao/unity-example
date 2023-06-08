@@ -5,6 +5,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Text;
+using UnityEngine.Networking;
+using Newtonsoft.Json;
+
+
+
+
+
+
 
 public class LoginDN : MonoBehaviour
 {
@@ -39,17 +48,55 @@ public class LoginDN : MonoBehaviour
     }
     public void CheckLogin()
     {
+        
         var user = edtUser.text;
         var pass = edtPass.text;
 
-        if(user.Equals("bao") && pass.Equals("123"))
+        UserModel userModel = new UserModel(user,pass);
+        StartCoroutine(smsLogin(userModel));
+        smsLogin(userModel);
+
+        //if(user.Equals("bao") && pass.Equals("123"))
+        //{
+           //SceneManager.LoadScene("Screen 0");
+       // }
+        //else
+       // {
+        //    txtError.text = "ERROR!";
+
+       // }
+    }
+
+    IEnumerator smsLogin(UserModel userModel)
+    {
+        //…
+        string jsonStringRequest = JsonConvert.SerializeObject(userModel);
+
+        var request = new UnityWebRequest("https://hoccungminh.dinhnt.com/fpt/login", "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonStringRequest);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            SceneManager.LoadScene("Screen 0");
+            Debug.Log(request.error);
         }
         else
         {
-            txtError.text = "ERROR!";
+            var jsonString = request.downloadHandler.text.ToString();
+            LoginResponModel loginResponModel = JsonConvert.DeserializeObject<LoginResponModel>(jsonString);
+            if(loginResponModel.status == 1)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                txtError.text = loginResponModel.notification;
+            }
 
         }
     }
+
 }
