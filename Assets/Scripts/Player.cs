@@ -6,16 +6,29 @@ using UnityEngine.SceneManagement;//Doi man
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using UnityEditor;
 using Unity.VisualScripting;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     private float speed;
     public Rigidbody2D rigidbody2D;
     private bool isRight = true;
+    private int countcoin = 0;
+    public TMP_Text txtcoin;
+    public AudioSource Soundcoin;
+   
     //animator
     private Animator animator;
     public float isRunning;
     public bool isJump;
+
+
+
+
+    public float disappearDelay = 0f; // Độ trễ trước khi người chơi tự biến mất
+
+    private bool isDestroyed = false;
+
     void Start()
     {
         // tốc độ
@@ -109,4 +122,43 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if( collision.gameObject.tag == "VPG")
+        {
+            Soundcoin.Play();
+            countcoin += 1;
+            txtcoin.text = countcoin + "x";
+            speed +=2;
+            Destroy(collision.gameObject);
+        }
+       if(collision.gameObject.tag == "Destroy")
+        {
+            DestroyPlayer();
+            Time.timeScale = 0;
+           
+        }
+       
+    }
+    private void DestroyPlayer()
+    {
+        if (!isDestroyed)
+        {
+            isDestroyed = true;
+
+            // Tạo một coroutine để tự biến mất sau một khoảng thời gian
+            StartCoroutine(DisappearDelay());
+        }
+    }
+
+    private IEnumerator DisappearDelay()
+    {
+        // Đợi một khoảng thời gian trước khi người chơi tự biến mất
+        yield return new WaitForSeconds(disappearDelay);
+
+        // Người chơi tự biến mất
+        gameObject.SetActive(false);
+    }
+
 }

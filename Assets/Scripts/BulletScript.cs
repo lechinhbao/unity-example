@@ -8,14 +8,14 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
         //Di chuyển đạn
-        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 5f );
+        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 6f );
     }
     public void setIsRight(bool isRight)
     {
