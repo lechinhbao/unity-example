@@ -72,7 +72,7 @@ public class LoginDN : MonoBehaviour
         //…
         string jsonStringRequest = JsonConvert.SerializeObject(userModel);
 
-        var request = new UnityWebRequest("https://hoccungminh.dinhnt.com/fpt/login", "POST");
+        var request = new UnityWebRequest("https://hoccungminh.dinhnt.com/fpt/save-score", "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonStringRequest);
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();

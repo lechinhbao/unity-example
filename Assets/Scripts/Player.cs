@@ -11,7 +11,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     private float speed;
-    public Rigidbody2D rigidbody2D;
+    public new Rigidbody2D rigidbody2D;
     private bool isRight = true;
     private int countcoin = 0;
     public TMP_Text txtcoin;

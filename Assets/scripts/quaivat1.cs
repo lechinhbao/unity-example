@@ -44,24 +44,24 @@ public class quaivat1 : MonoBehaviour
         if (isRight)
         {
             //vector3
-            scale.x = 0.3f;
+            scale.x = -0.5f;
             transform.Translate(Vector3.right * 2f * Time.deltaTime);
         }
         else
         {
-            scale.x = -0.3f;
+            scale.x = 0.5f;
             transform.Translate(Vector3.left * 2f * Time.deltaTime);
         }
         transform.localScale = scale;
     }
-    public void OnTriggerEnter2D(Collider2D collider)
-    {
-        //cham quay dau
-        if (collider.gameObject.tag == "trai")
-        {
-            isRight = isRight ? false : true;
-        }
-    }
+    // public void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //cham quay dau
+    //  if (collider.gameObject.tag == "trai")
+    // {
+    //     isRight = isRight ? false : true;
+    // }
+    // }
     public void SetStart(float start)
     {
         this.start = start;
