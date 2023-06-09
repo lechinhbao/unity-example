@@ -44,12 +44,12 @@ public class quaivat1 : MonoBehaviour
         if (isRight)
         {
             //vector3
-            scale.x = 0.3f;
+            scale.x = 0.4f;
             transform.Translate(Vector3.right * 2f * Time.deltaTime);
         }
         else
         {
-            scale.x = -0.3f;
+            scale.x = -0.4f;
             transform.Translate(Vector3.left * 2f * Time.deltaTime);
         }
         transform.localScale = scale;
