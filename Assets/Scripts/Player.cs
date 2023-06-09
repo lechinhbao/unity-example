@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class Player : MonoBehaviour
 {
     private float speed;
-    public Rigidbody2D rigidbody2D;
+    public new Rigidbody2D rigidbody2D;
     private bool isRight = true;
     //animator
     private Animator animator;
