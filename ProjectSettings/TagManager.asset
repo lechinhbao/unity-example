@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - quaivat1
   - Destroy
+  - VPG
+  - die
   layers:
   - Default
   - TransparentFX
