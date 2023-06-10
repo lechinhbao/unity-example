@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
+             
             rigidbody2D.AddForce(new Vector2(0, 400));
             isJump = true;
             isRunning = 0;
@@ -130,7 +131,7 @@ public class Player : MonoBehaviour
             Soundcoin.Play();
             countcoin += 1;
             txtcoin.text = countcoin + "x";
-            speed +=2;
+            speed  += 2;
             Destroy(collision.gameObject);
         }
        if(collision.gameObject.tag == "Destroy")
