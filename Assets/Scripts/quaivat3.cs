@@ -76,5 +76,13 @@ public class quaivat3 : MonoBehaviour
     {
         this.player = player;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
 
