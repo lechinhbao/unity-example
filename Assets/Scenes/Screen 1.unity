@@ -1635,6 +1635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 98223110388628588, guid: bd9c1287abb83be489df0255a6f1ad13, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0aebdeafa713aa142a06d904c05b4f35, type: 2}
     - target: {fileID: 98223110388628590, guid: bd9c1287abb83be489df0255a6f1ad13, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -1690,6 +1694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1016956260}
+  - component: {fileID: 1016956261}
   - component: {fileID: 1016956259}
   - component: {fileID: 1016956258}
   m_Layer: 0
@@ -1765,6 +1770,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016956261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016956257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f5b2c892c3c91448865b88f902d082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  left: 0
+  right: 200
+  player: {fileID: 161747005}
 --- !u!1001 &1100747521
 PrefabInstance:
   m_ObjectHideFlags: 0
