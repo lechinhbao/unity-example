@@ -72,7 +72,8 @@ public class LoginDN : MonoBehaviour
         //…
         string jsonStringRequest = JsonConvert.SerializeObject(userModel);
 
-        var request = new UnityWebRequest("https://hoccungminh.dinhnt.com/fpt/save-score", "POST");
+       // var request = new UnityWebRequest("https://hoccungminh.dinhnt.com/fpt/save-score", "POST");
+        var request = new UnityWebRequest("https://rich-plum-pocket.cyclic.app/api/mob104/user/login", "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonStringRequest);
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
@@ -81,20 +82,26 @@ public class LoginDN : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log(request.error);
+            Debug.Log("request failed " + request.error);
         }
         else
         {
+            Debug.Log("run");
             var jsonString = request.downloadHandler.text.ToString();
             LoginResponModel loginResponModel = JsonConvert.DeserializeObject<LoginResponModel>(jsonString);
-            if(loginResponModel.status == 1)
-            {
-                SceneManager.LoadScene(1);
-            }
-            else
-            {
-                txtError.text = loginResponModel.notification;
-            }
+            Debug.Log(loginResponModel.age);
+            SceneManager.LoadScene("Screen 1");
+            //  LoginResponModel loginResponModel = JsonConvert.DeserializeObject<LoginResponModel>(jsonString);
+            // Debug.Log(loginResponModel);
+            //  if (loginResponModel.id != null)
+            //    {
+            //       SceneManager.LoadScene(1);
+            //   }
+            //  else
+            //  {
+            //     txtError.text = "Login Failed";
+
+            // }
 
         }
     }
