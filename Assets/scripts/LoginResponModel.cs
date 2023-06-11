@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LoginResponModel
 {
-    public LoginResponModel(string id, string email, string name, int age, int score, string scene, float positionx, float positiony, float positionz)
+    public LoginResponModel(int status, string id, string email, string name, int age, int score, string scene, float positionx, float positiony, float positionz)
     {
         //  this.status = status;
         //    this.notification = notification;
@@ -15,6 +15,7 @@ public class LoginResponModel
         //this.positionX = positionX;
         // this.positionY = positionY;
         // this.positionZ = positionZ;
+        this.status = status;
         this.id = id;
         this.email = email;
         this.name = name;
@@ -36,6 +37,7 @@ public class LoginResponModel
 
 
 
+    public int status { get; set; }
     public string id { get; set; }
     public string email { get; set; }
     public string name { get; set; }

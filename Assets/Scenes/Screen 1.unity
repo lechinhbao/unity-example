@@ -643,10 +643,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 380010878794342256, guid: e1926a824ebbd344386a958617495a92, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 380010878794342258, guid: e1926a824ebbd344386a958617495a92, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 161747005}
+    - target: {fileID: 380010878794342259, guid: e1926a824ebbd344386a958617495a92, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 380010878794342259, guid: e1926a824ebbd344386a958617495a92, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 380010878794342263, guid: e1926a824ebbd344386a958617495a92, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -693,6 +705,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 380010878794342269, guid: e1926a824ebbd344386a958617495a92, type: 3}
       propertyPath: m_Name
+      value: quaivat3
+      objectReference: {fileID: 0}
+    - target: {fileID: 380010878794342269, guid: e1926a824ebbd344386a958617495a92, type: 3}
+      propertyPath: m_TagString
       value: quaivat3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
