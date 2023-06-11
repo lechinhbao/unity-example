@@ -16,17 +16,15 @@ public class Player : MonoBehaviour
     private int countcoin = 0;
     public TMP_Text txtcoin;
     public AudioSource Soundcoin;
+    public GameObject menu;
+    private bool isPlaying = true;
    
     //animator
     private Animator animator;
     public float isRunning;
     public bool isJump;
 
-
-
-
     public float disappearDelay = 0f; // Độ trễ trước khi người chơi tự biến mất
-
     private bool isDestroyed = false;
 
     void Start()
@@ -45,12 +43,9 @@ public class Player : MonoBehaviour
     {
         animator.SetFloat("IsRunning", isRunning);
         animator.SetBool("IsJump", isJump);
-        //isRunning= 0;
-
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-
             // xoay mặt qua phải
             if (isRight == false)
             {
@@ -61,13 +56,11 @@ public class Player : MonoBehaviour
             }
 
             // vận tốc
-            //rigidbody2D.velocity = new Vector2(speed,0);
-            //isRunning = speed;
             transform.Translate(Vector3.right * speed * Time.deltaTime);
             isRunning = 100;
         }
 
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             // xoay mặt qua trái
             if (isRight == true)
@@ -77,19 +70,17 @@ public class Player : MonoBehaviour
                 transform.localScale = scale;
                 isRight = false;
             }
+
             // vận tốc
-            //rigidbody2D.velocity = new Vector2(-speed,0);
-            //isRunning = speed;
             transform.Translate(Vector3.left * speed * Time.deltaTime);
             isRunning = 100;
         }
+
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-             
             rigidbody2D.AddForce(new Vector2(0, 400));
             isJump = true;
             isRunning = 0;
-
         }
         else
         {
@@ -109,10 +100,15 @@ public class Player : MonoBehaviour
                 Quaternion.identity
                 );
             gameObject.GetComponent<BulletScript>().setIsRight(isRight);
-
         }
 
+        //show menu
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ShowMenu();
+        }
     }
+
     //Bắt sựu kiện 2 box collider va chạm nhau
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -121,7 +117,6 @@ public class Player : MonoBehaviour
         {
             isJump = false;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -138,16 +133,13 @@ public class Player : MonoBehaviour
         {
             DestroyPlayer();
             Time.timeScale = 0;
-           
         }
-       
     }
     private void DestroyPlayer()
     {
         if (!isDestroyed)
         {
             isDestroyed = true;
-
             // Tạo một coroutine để tự biến mất sau một khoảng thời gian
             StartCoroutine(DisappearDelay());
         }
@@ -157,9 +149,28 @@ public class Player : MonoBehaviour
     {
         // Đợi một khoảng thời gian trước khi người chơi tự biến mất
         yield return new WaitForSeconds(disappearDelay);
-
         // Người chơi tự biến mất
         gameObject.SetActive(false);
     }
 
+    public void ShowMenu()
+    {
+        if (isPlaying)
+        {
+            menu.SetActive(true);
+            Time.timeScale = 0;
+            isPlaying = false;
+        }
+        else
+        {
+            menu.SetActive(false);
+            Time.timeScale = 1;
+            isPlaying = true;
+        }
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
