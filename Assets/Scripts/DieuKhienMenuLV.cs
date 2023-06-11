@@ -7,7 +7,7 @@ public class DieuKhienMenuLV : MonoBehaviour
 {
     public void PlayGame1()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
     public void PlayGame2()
     {
