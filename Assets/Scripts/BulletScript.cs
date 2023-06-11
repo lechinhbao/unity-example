@@ -15,7 +15,11 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         //Di chuyển đạn
+<<<<<<< HEAD
         transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 5f );
+=======
+        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 4f );
+>>>>>>> 7d6715159febefb34c98eb3d7bccd07fbfa4c165
     }
     public void setIsRight(bool isRight)
     {
