@@ -8,7 +8,7 @@ using UnityEditor;
 using Unity.VisualScripting;
 using TMPro;
 
-public class Player : MonoBehaviour
+public class Player_Bao : MonoBehaviour
 {
     private float speed;
     public new Rigidbody2D rigidbody2D;
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
                 new Vector3(x, y, z),
                 Quaternion.identity
                 );
-            gameObject.GetComponent<BulletScript>().setIsRight(isRight);
+            gameObject.GetComponent<BulletScript_Bao>().setIsRight(isRight);
 
         }
 

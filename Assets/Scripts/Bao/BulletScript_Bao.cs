@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class BulletScript_Bao : MonoBehaviour
 {
     private bool isRight;
     // Start is called before the first frame update
