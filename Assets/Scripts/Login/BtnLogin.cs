@@ -3,6 +3,7 @@ using System.Text;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BtnLogin : MonoBehaviour
 {
@@ -45,7 +46,8 @@ public class BtnLogin : MonoBehaviour
                     if (userResponse.status == 200)
                     {
                         UserResponse.setInstance(userResponse);
-                        txtNotification.text = "Login successfully";
+                        txtNotification.text = "Login successfully wait for minutes...";
+                        Invoke("loadScene", 3);
                         Debug.Log("Doned");
                     }
                     else
@@ -61,5 +63,10 @@ public class BtnLogin : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void loadScene()
+    {
+        SceneManager.LoadScene("Screen 2");
     }
 }

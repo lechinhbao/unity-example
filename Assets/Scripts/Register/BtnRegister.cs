@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BtnRegister : MonoBehaviour
 {
@@ -63,7 +64,8 @@ public class BtnRegister : MonoBehaviour
                     if (userResponse.status == 200)
                     {
                         UserResponse.setInstance(userResponse);
-                        txtNotification.text = "Register successfully";
+                        txtNotification.text = "Register successfully wait for minutes...";
+                        Invoke("loadScene", 3);
                         Debug.Log("Doned");
                     }
                     else
@@ -79,5 +81,9 @@ public class BtnRegister : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void loadScene(){
+        SceneManager.LoadScene("Screen 2");
     }
 }
