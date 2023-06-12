@@ -8,6 +8,7 @@ public class BtnLogin : MonoBehaviour
 {
     [SerializeField] private InputField inputEmail;
     [SerializeField] private InputField inputPassword;
+    [SerializeField] private Text txtNotification;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +39,26 @@ public class BtnLogin : MonoBehaviour
             using (var response = await httpClient.PostAsync("https://rich-plum-pocket.cyclic.app/api/mob104/user/login", content))
             {
                 string responseData = await response.Content.ReadAsStringAsync();
-                UserResponse userResponse = JsonConvert.DeserializeObject<UserResponse>(responseData);
-                // UserResponse userResponse = JsonUtility.FromJson<UserResponse>(responseData);
-                Debug.Log("name: " + userResponse.name);
+                try
+                {
+                    UserResponse userResponse = JsonConvert.DeserializeObject<UserResponse>(responseData);
+                    if (userResponse.status == 200)
+                    {
+                        UserResponse.setInstance(userResponse);
+                        txtNotification.text = "Login successfully";
+                        Debug.Log("Doned");
+                    }
+                    else
+                    {
+                        txtNotification.text = "Login failed";
+                        Debug.Log("Failed");
+                    }
+                }
+                catch (System.Exception)
+                {
+                    txtNotification.text = "Login failed";
+                    Debug.Log("Failed");
+                }
             }
         }
     }

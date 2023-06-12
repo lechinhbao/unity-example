@@ -12,6 +12,7 @@ public class BtnRegister : MonoBehaviour
     [SerializeField] private InputField inputPassword;
     [SerializeField] private InputField inputName;
     [SerializeField] private InputField inputAge;
+    [SerializeField] private Text txtNotification;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,8 +57,26 @@ public class BtnRegister : MonoBehaviour
             using (var response = await httpClient.PostAsync("https://rich-plum-pocket.cyclic.app/api/mob104/user/register", content))
             {
                 string responseData = await response.Content.ReadAsStringAsync();
-                UserResponse userResponse = JsonUtility.FromJson<UserResponse>(responseData);
-                Debug.Log(responseData);
+                try
+                {
+                    UserResponse userResponse = JsonConvert.DeserializeObject<UserResponse>(responseData);
+                    if (userResponse.status == 200)
+                    {
+                        UserResponse.setInstance(userResponse);
+                        txtNotification.text = "Register successfully";
+                        Debug.Log("Doned");
+                    }
+                    else
+                    {
+                        txtNotification.text = "Register failed";
+                        Debug.Log("Failed");
+                    }
+                }
+                catch (System.Exception)
+                {
+                    txtNotification.text = "Register failed";
+                    Debug.Log("Failed");
+                }
             }
         }
     }

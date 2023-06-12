@@ -1,9 +1,6 @@
-using System;
-
-// [Serializable]
 public class UserResponse
 {
-    public UserResponse(int status, string id, string email, string name, int age, int score, string scene, float positionx, float positiony, float positionz)
+    public UserResponse(int status, string id, string email, string name, int age, int score, string scene, string positionx, string positiony, string positionz)
     {
         this.status = status;
         this.id = id;
@@ -23,16 +20,16 @@ public class UserResponse
     public int age { get; set; }
     public int score { get; set; }
     public string scene { get; set; }
-    public float positionx { get; set; }
-    public float positiony { get; set; }
-    public float positionz { get; set; }
-    // private static UserResponse instance;
-    // public void setInstance(UserResponse userResponse)
-    // {
-    //     instance = userResponse;
-    // }
-    // public UserResponse getInstance()
-    // {
-    //     return instance;
-    // }
+    public string positionx { get; set; }
+    public string positiony { get; set; }
+    public string positionz { get; set; }
+    private static UserResponse instance;
+    public static void setInstance(UserResponse userResponse)
+    {
+        instance = userResponse;
+    }
+    public static UserResponse getInstance()
+    {
+        return instance;
+    }
 }
