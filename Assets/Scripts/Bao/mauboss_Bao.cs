@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mauboss : MonoBehaviour
+public class mauboss_Bao : MonoBehaviour
 {
     // Start is called before the first frame update
  private float maxHealth = 100;

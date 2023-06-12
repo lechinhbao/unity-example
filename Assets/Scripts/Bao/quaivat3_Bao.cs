@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class quaivat2 : MonoBehaviour
+public class quaivat3_Bao : MonoBehaviour
 {
     public float start, end;
     private bool isRight; //check
@@ -54,7 +54,7 @@ public class quaivat2 : MonoBehaviour
         }
         transform.localScale = scale;
     }
-    /*public void OnTriggerEnter2D(Collider2D collider)
+   /* public void OnTriggerEnter2D(Collider2D collider)
     {
         //cham quay dau
         if (collider.gameObject.tag == "trai")
@@ -75,6 +75,14 @@ public class quaivat2 : MonoBehaviour
     public void SetPlayer(GameObject player)
     {
         this.player = player;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
 

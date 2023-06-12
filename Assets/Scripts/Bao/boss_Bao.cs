@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class boss : MonoBehaviour
+public class boss_Bao : MonoBehaviour
 {
     public float start, end;
     private bool isRight;
