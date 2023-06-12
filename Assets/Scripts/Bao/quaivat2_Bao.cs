@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<<< HEAD:Assets/Scripts/Nam/quaivat2_Nam.cs
-public class quaivat2_Nam : MonoBehaviour
-========
 public class quaivat2_Bao : MonoBehaviour
->>>>>>>> bao_back:Assets/Scripts/Bao/quaivat2_Bao.cs
 {
     public float start, end;
     private bool isRight; //check

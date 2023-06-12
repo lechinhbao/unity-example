@@ -5,15 +5,15 @@ using UnityEngine;
 public class mauboss_Bao : MonoBehaviour
 {
     // Start is called before the first frame update
- private float maxHealth = 100;
+    private float maxHealth = 100;
 
 
 
     void Start()
     {
 
-        maxHealth= 100;
-       
+        maxHealth = 100;
+
 
     }
 
@@ -21,14 +21,8 @@ public class mauboss_Bao : MonoBehaviour
     void Update()
     {
 
+    }
 
-      
-
-}
-
-
-
-   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -36,7 +30,7 @@ public class mauboss_Bao : MonoBehaviour
             maxHealth = maxHealth - 10;
             Debug.Log("da bi ban trung");
         }
-        if(maxHealth <= 0)
+        if (maxHealth <= 0)
         {
             Destroy(gameObject);
         }

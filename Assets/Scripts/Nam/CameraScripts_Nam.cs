@@ -1,12 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-<<<<<<<< HEAD:Assets/Scripts/Nam/CameraScripts_Nam.cs
 public class CameraScripts_Nam : MonoBehaviour
-========
-public class CameraScripts_Bao : MonoBehaviour
->>>>>>>> bao_back:Assets/Scripts/Bao/CameraScripts_Bao.cs
 {
     public float left, right;
     public GameObject player;

@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<<< HEAD:Assets/Scripts/Nam/Animal_Nam.cs
 public class Animal_Nam : MonoBehaviour
-========
-public class Animal_Bao : MonoBehaviour
->>>>>>>> bao_back:Assets/Scripts/Bao/Animal_Bao.cs
 {
     public float start, end;
     private bool isRight; //true -> di chuyen phai false di chuyen ben trai

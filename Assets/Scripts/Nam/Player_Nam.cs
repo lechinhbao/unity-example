@@ -7,12 +7,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 using UnityEditor;
 using Unity.VisualScripting;
 using TMPro;
-
-<<<<<<<< HEAD:Assets/Scripts/Nam/Player_Nam.cs
 public class Player_Nam : MonoBehaviour
-========
-public class Player_Bao : MonoBehaviour
->>>>>>>> bao_back:Assets/Scripts/Bao/Player_Bao.cs
 {
     private float speed;
     public new Rigidbody2D rigidbody2D;
@@ -126,11 +121,7 @@ public class Player_Bao : MonoBehaviour
                 new Vector3(x, y, z),
                 Quaternion.identity
                 );
-<<<<<<<< HEAD:Assets/Scripts/Nam/Player_Nam.cs
             gameObject.GetComponent<BulletScript_Nam>().setIsRight(isRight);
-========
-            gameObject.GetComponent<BulletScript_Bao>().setIsRight(isRight);
->>>>>>>> bao_back:Assets/Scripts/Bao/Player_Bao.cs
 
         }
 
