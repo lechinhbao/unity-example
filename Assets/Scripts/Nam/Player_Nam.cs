@@ -104,7 +104,7 @@ public class Player_Nam : MonoBehaviour
             var z = transform.position.z;
 
             GameObject gameObject = (GameObject)Instantiate(
-                Resources.Load("Prefabs/bullet"),
+                Resources.Load("Prefabs/bullet_Nam"),
                 new Vector3(x, y, z),
                 Quaternion.identity
                 );
