@@ -16,7 +16,12 @@ public class BulletScript_Nam : MonoBehaviour
     {
         //Di chuyển đạn
 
+<<<<<<< HEAD:Assets/Scripts/BulletScript_Nam.cs
         transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 5f );
+=======
+        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 30f );
+
+>>>>>>> bao:Assets/Scripts/BulletScript.cs
 
     }
     public void setIsRight(bool isRight)
@@ -29,9 +34,10 @@ public class BulletScript_Nam : MonoBehaviour
         {
             //Kill đạn
             Destroy(gameObject);
+            var name_quai = collision.attachedRigidbody.name;
+            Destroy(GameObject.Find(name_quai));
         }
-        var name = collision.attachedRigidbody.name;
-        Destroy(GameObject.Find(name));
+        
     }
  
 }
