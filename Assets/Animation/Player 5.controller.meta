@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animation/Player 5.controller.meta
 guid: 1987ab7a72b14d841ad656588175ca67
 NativeFormatImporter:
+========
+guid: 99ca4c4112274d645a246c34fbc7e4d9
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> bao:Assets/Images/robotfree/Running.meta
   externalObjects: {}
   mainObjectFileID: 9100000
   userData: 

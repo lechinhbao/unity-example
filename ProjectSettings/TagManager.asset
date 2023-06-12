@@ -12,6 +12,7 @@ TagManager:
   - die
   - quaivat2
   - quaivat3
+  - boss
   layers:
   - Default
   - TransparentFX
