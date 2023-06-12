@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,8 +16,7 @@ public class BulletScript : MonoBehaviour
     {
         //Di chuyển đạn
 
-        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 30f );
-
+        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 5f );
 
     }
     public void setIsRight(bool isRight)
