@@ -52,37 +52,4 @@
         "temp/":true,
         "Temp/":true
     },
-    "omnisharp.useModernNet": false,
-    "files.associations": {
-        "*.cginc": "shader",
-        "*.glslinc": "shader",
-        "*.hlsl": "shader",
-        "*.shader": "shader",
-        "*.compute": "shader",
-        "*.cg": "shader",
-        "*.glsl": "shader",
-        "*.vert": "shader",
-        "*.frag": "shader",
-        "*.geom": "shader",
-        "*.tesc": "shader",
-        "*.tese": "shader",
-        "*.metal": "shader",
-        "*.unity": "xml",
-        "*.prefab": "jsonc",
-        "*.anim": "jsonc",
-        "*.physicsMaterial2D": "jsonc",
-        "*.physicsMaterial": "jsonc",
-        "*.physicsShape": "jsonc",
-        "*.mask": "jsonc",
-        "*.mixer": "jsonc",
-        "*.playable": "jsonc",
-        "*.spriteatlas": "jsonc",
-        "*.overrideController": "jsonc",
-        "*.controller": "jsonc"
-    },
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": false,
-        "strings": true
-    },
 }

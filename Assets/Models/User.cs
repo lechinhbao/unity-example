@@ -1,3 +1,4 @@
+
 public class User
 {
     public User(string email, string password)
@@ -12,8 +13,8 @@ public class User
         this.name = name;
         this.age = age;
     }
-    private string email { get; set; }
-    private string password { get; set; }
-    private string name { get; set; }
-    private int age { get; set; }
+    public string email { get; set; }
+    public string password { get; set; }
+    public string name { get; set; }
+    public int age { get; set; }
 }
