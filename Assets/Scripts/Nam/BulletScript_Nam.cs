@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<<< HEAD:Assets/Scripts/Nam/BulletScript_Nam.cs
 public class BulletScript_Nam : MonoBehaviour
-========
-public class BulletScript_Bao : MonoBehaviour
->>>>>>>> bao:Assets/Scripts/Bao/BulletScript_Bao.cs
 {
     private bool isRight;
     // Start is called before the first frame update
@@ -20,13 +16,7 @@ public class BulletScript_Bao : MonoBehaviour
     {
         //Di chuyển đạn
 
-<<<<<<<< HEAD:Assets/Scripts/Nam/BulletScript_Nam.cs
         transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 5f );
-========
-        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 30f );
-
->>>>>>>> bao:Assets/Scripts/Bao/BulletScript_Bao.cs
-
     }
     public void setIsRight(bool isRight)
     {

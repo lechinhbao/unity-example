@@ -8,18 +8,14 @@ using UnityEditor;
 using Unity.VisualScripting;
 using TMPro;
 
-<<<<<<<< HEAD:Assets/Scripts/Nam/Player_Nam.cs
-public class Player_Nam : MonoBehaviour
-========
 public class Player_Bao : MonoBehaviour
->>>>>>>> bao:Assets/Scripts/Bao/Player_Bao.cs
 {
     private float speed;
     public new Rigidbody2D rigidbody2D;
     private bool isRight = true;
     public TMP_Text txtcoin;
     public AudioSource Soundcoin;
-   
+
     //animator
     private Animator animator;
     public float isRunning;
@@ -31,7 +27,7 @@ public class Player_Bao : MonoBehaviour
     public float disappearDelay = 0f; // Độ trễ trước khi người chơi tự biến mất
 
     private bool isDestroyed = false;
-    public int healt; 
+    public int healt;
 
     void Start()
     {
@@ -43,7 +39,7 @@ public class Player_Bao : MonoBehaviour
         animator = GetComponent<Animator>();
         isRunning = 0;
         healt = 5;
-        
+
     }
 
     void Update()
@@ -58,19 +54,19 @@ public class Player_Bao : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
 
-            animator.SetBool("run", true); 
+            animator.SetBool("run", true);
             animator.SetBool("chayban", true);
             // xoay mặt qua phải
             if (isRight == false)
             {
 
-               
+
                 Vector2 scale = transform.localScale;
                 scale.x *= scale.x < 0 ? -1 : 1;
                 transform.localScale = scale;
                 isRight = true;
             }
-          
+
 
             // vận tốc
             //rigidbody2D.velocity = new Vector2(speed,0);
@@ -86,7 +82,7 @@ public class Player_Bao : MonoBehaviour
             // xoay mặt qua trái
             if (isRight == true)
             {
-                
+
                 Vector2 scale = transform.localScale;
                 scale.x *= scale.x > 0 ? -1 : 1;
                 transform.localScale = scale;
@@ -115,7 +111,7 @@ public class Player_Bao : MonoBehaviour
         //Bắn đạn
         if (Input.GetKeyDown(KeyCode.S))
         {
-            
+
             animator.SetBool("dungyenban", true);
             var x = transform.position.x + (isRight ? 0.5f : -0.5f);
             var y = transform.position.y;
@@ -126,11 +122,7 @@ public class Player_Bao : MonoBehaviour
                 new Vector3(x, y, z),
                 Quaternion.identity
                 );
-<<<<<<<< HEAD:Assets/Scripts/Nam/Player_Nam.cs
-            gameObject.GetComponent<BulletScript_Nam>().setIsRight(isRight);
-========
             gameObject.GetComponent<BulletScript_Bao>().setIsRight(isRight);
->>>>>>>> bao:Assets/Scripts/Bao/Player_Bao.cs
 
         }
 
@@ -138,15 +130,15 @@ public class Player_Bao : MonoBehaviour
     //Bắt sựu kiện 2 box collider va chạm nhau
     private void OnCollisionEnter2D(Collision2D collision)
     {
-      
-        if(collision.gameObject.tag == "Floor")
+
+        if (collision.gameObject.tag == "Floor")
         {
             isJump = true;
         }
         if (collision.gameObject.tag == "boss")
         {
             healt--;
-            if(healt <= 0 )
+            if (healt <= 0)
             {
                 Destroy(gameObject);
             }
@@ -155,13 +147,13 @@ public class Player_Bao : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-       if(collision.gameObject.tag == "VPG")
+
+        if (collision.gameObject.tag == "VPG")
         {
-            speed +=2;
+            speed += 2;
             Destroy(collision.gameObject);
         }
-       if(collision.gameObject.tag == "Destroy")
+        if (collision.gameObject.tag == "Destroy")
         {
             DestroyPlayer();
             Time.timeScale = 0;
