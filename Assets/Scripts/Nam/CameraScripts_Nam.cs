@@ -41,7 +41,7 @@ public class CameraScripts_Nam : MonoBehaviour
         }
 
 
-        transform.position = new Vector3(cameraX, cameraY, -10);
+        transform.position = new Vector3(playerX, cameraY, -10);
     }
 }
 

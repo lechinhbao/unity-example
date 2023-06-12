@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,17 +16,9 @@ public class Player_Nam : MonoBehaviour
     private int countcoin = 0;
     public TMP_Text txtcoin;
     public AudioSource Soundcoin;
-   
-    //animator
     private Animator animator;
-    public float isRunning;
-    public bool isJump;
-
-
-
-
+    private int state = 0;
     public float disappearDelay = 0f; // Độ trễ trước khi người chơi tự biến mất
-
     private bool isDestroyed = false;
 
     void Start()
@@ -37,20 +29,13 @@ public class Player_Nam : MonoBehaviour
         isRight = true;
 
         animator = GetComponent<Animator>();
-        isRunning = 0;
-        isJump = false;
     }
 
     void Update()
     {
-        animator.SetFloat("IsRunning", isRunning);
-        animator.SetBool("IsJump", isJump);
-        //isRunning= 0;
-
-
+        state = 0;
         if (Input.GetKey(KeyCode.RightArrow))
         {
-
             // xoay mặt qua phải
             if (isRight == false)
             {
@@ -59,12 +44,8 @@ public class Player_Nam : MonoBehaviour
                 transform.localScale = scale;
                 isRight = true;
             }
-
-            // vận tốc
-            //rigidbody2D.velocity = new Vector2(speed,0);
-            //isRunning = speed;
             transform.Translate(Vector3.right * speed * Time.deltaTime);
-            isRunning = 100;
+            state = 1;
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow))
@@ -77,24 +58,15 @@ public class Player_Nam : MonoBehaviour
                 transform.localScale = scale;
                 isRight = false;
             }
-            // vận tốc
-            //rigidbody2D.velocity = new Vector2(-speed,0);
-            //isRunning = speed;
             transform.Translate(Vector3.left * speed * Time.deltaTime);
-            isRunning = 100;
+            state = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-             
-            rigidbody2D.AddForce(new Vector2(0, 400));
-            isJump = true;
-            isRunning = 0;
-
+            rigidbody2D.AddForce(new Vector2(0, 600));
+            state = 2;
         }
-        else
-        {
-            isRunning = 0;
-        }
+        animator.SetInteger("state", state);
 
         //Bắn đạn
         if (Input.GetKeyDown(KeyCode.S))
@@ -109,9 +81,7 @@ public class Player_Nam : MonoBehaviour
                 Quaternion.identity
                 );
             gameObject.GetComponent<BulletScript_Nam>().setIsRight(isRight);
-
         }
-
     }
     //Bắt sựu kiện 2 box collider va chạm nhau
     private void OnCollisionEnter2D(Collision2D collision)
@@ -119,29 +89,27 @@ public class Player_Nam : MonoBehaviour
         var name = collision.gameObject.tag;
         if (name.Equals("Floor"))
         {
-            isJump = false;
+            state = 2;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if( collision.gameObject.tag == "VPG")
+        if (collision.gameObject.tag == "VPG")
         {
             Soundcoin.Play();
             countcoin += 1;
             txtcoin.text = countcoin + "x";
-            speed  += 2;
+            speed += 2;
             Destroy(collision.gameObject);
         }
-       if(collision.gameObject.tag == "Destroy")
+        if (collision.gameObject.tag == "Destroy")
         {
             DestroyPlayer();
             Time.timeScale = 0;
-           
         }
-       
     }
+
     private void DestroyPlayer()
     {
         if (!isDestroyed)
