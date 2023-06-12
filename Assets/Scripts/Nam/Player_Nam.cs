@@ -16,7 +16,7 @@ public class Player_Nam : MonoBehaviour
     private int countcoin = 0;
     public TMP_Text txtcoin;
     public AudioSource Soundcoin;
-   
+
     //animator
     private Animator animator;
     public float isRunning;
@@ -85,7 +85,7 @@ public class Player_Nam : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-             
+
             rigidbody2D.AddForce(new Vector2(0, 400));
             isJump = true;
             isRunning = 0;
@@ -104,12 +104,11 @@ public class Player_Nam : MonoBehaviour
             var z = transform.position.z;
 
             GameObject gameObject = (GameObject)Instantiate(
-                Resources.Load("Prefabs/bullet"),
+                Resources.Load("Resources/Prefabs/bullet"),
                 new Vector3(x, y, z),
                 Quaternion.identity
                 );
             gameObject.GetComponent<BulletScript_Nam>().setIsRight(isRight);
-
         }
 
     }
@@ -126,21 +125,21 @@ public class Player_Nam : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if( collision.gameObject.tag == "VPG")
+        if (collision.gameObject.tag == "VPG")
         {
             Soundcoin.Play();
             countcoin += 1;
             txtcoin.text = countcoin + "x";
-            speed  += 2;
+            speed += 2;
             Destroy(collision.gameObject);
         }
-       if(collision.gameObject.tag == "Destroy")
+        if (collision.gameObject.tag == "Destroy")
         {
             DestroyPlayer();
             Time.timeScale = 0;
-           
+
         }
-       
+
     }
     private void DestroyPlayer()
     {
