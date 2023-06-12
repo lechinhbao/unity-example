@@ -13,14 +13,13 @@ public class Player : MonoBehaviour
     private float speed;
     public new Rigidbody2D rigidbody2D;
     private bool isRight = true;
-    private int countcoin = 0;
     public TMP_Text txtcoin;
     public AudioSource Soundcoin;
    
     //animator
     private Animator animator;
     public float isRunning;
-    public bool isJump;
+    public bool isJump = false;
 
 
 
@@ -28,37 +27,46 @@ public class Player : MonoBehaviour
     public float disappearDelay = 0f; // Độ trễ trước khi người chơi tự biến mất
 
     private bool isDestroyed = false;
+    public int healt; 
 
     void Start()
     {
         // tốc độ
-        speed = 5f;
+        speed = 10f;
         rigidbody2D = GetComponent<Rigidbody2D>();
         isRight = true;
 
         animator = GetComponent<Animator>();
         isRunning = 0;
-        isJump = false;
+        healt = 5;
+        
     }
 
     void Update()
     {
-        animator.SetFloat("IsRunning", isRunning);
-        animator.SetBool("IsJump", isJump);
+        animator.SetBool("run", false);
+        animator.SetBool("chayban", false);
+        animator.SetBool("dungyenban", false);
+        animator.SetBool("nhay", false);
         //isRunning= 0;
 
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
 
+            animator.SetBool("run", true); 
+            animator.SetBool("chayban", true);
             // xoay mặt qua phải
             if (isRight == false)
             {
+
+               
                 Vector2 scale = transform.localScale;
                 scale.x *= scale.x < 0 ? -1 : 1;
                 transform.localScale = scale;
                 isRight = true;
             }
+          
 
             // vận tốc
             //rigidbody2D.velocity = new Vector2(speed,0);
@@ -69,9 +77,12 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
+            animator.SetBool("run", true);
+            animator.SetBool("chayban", true);
             // xoay mặt qua trái
             if (isRight == true)
             {
+                
                 Vector2 scale = transform.localScale;
                 scale.x *= scale.x > 0 ? -1 : 1;
                 transform.localScale = scale;
@@ -83,22 +94,25 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.left * speed * Time.deltaTime);
             isRunning = 100;
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        if (isJump = true)
         {
-             
-            rigidbody2D.AddForce(new Vector2(0, 400));
-            isJump = true;
-            isRunning = 0;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                animator.SetBool("nhay", true);
+                rigidbody2D.AddForce(new Vector2(0, 400));
 
-        }
-        else
-        {
-            isRunning = 0;
+            }
+            else
+            {
+                isRunning = 0;
+            }
         }
 
         //Bắn đạn
         if (Input.GetKeyDown(KeyCode.S))
         {
+            
+            animator.SetBool("dungyenban", true);
             var x = transform.position.x + (isRight ? 0.5f : -0.5f);
             var y = transform.position.y;
             var z = transform.position.z;
@@ -116,31 +130,36 @@ public class Player : MonoBehaviour
     //Bắt sựu kiện 2 box collider va chạm nhau
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var name = collision.gameObject.tag;
-        if (name.Equals("Floor"))
+      
+        if(collision.gameObject.tag == "Floor")
         {
-            isJump = false;
+            isJump = true;
         }
-
+        if (collision.gameObject.tag == "boss")
+        {
+            healt--;
+            if(healt <= 0 )
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if( collision.gameObject.tag == "VPG")
+       
+       if(collision.gameObject.tag == "VPG")
         {
-            Soundcoin.Play();
-            countcoin += 1;
-            txtcoin.text = countcoin + "x";
-            speed  += 2;
+            speed +=2;
             Destroy(collision.gameObject);
         }
        if(collision.gameObject.tag == "Destroy")
         {
             DestroyPlayer();
             Time.timeScale = 0;
-           
         }
-       
+
+
     }
     private void DestroyPlayer()
     {
