@@ -29,9 +29,10 @@ public class BulletScript : MonoBehaviour
         {
             //Kill đạn
             Destroy(gameObject);
+            var name_quai = collision.attachedRigidbody.name;
+            Destroy(GameObject.Find(name_quai));
         }
-        var name = collision.attachedRigidbody.name;
-        Destroy(GameObject.Find(name));
+        
     }
  
 }

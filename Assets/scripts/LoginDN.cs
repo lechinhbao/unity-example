@@ -89,8 +89,10 @@ public class LoginDN : MonoBehaviour
             Debug.Log("run");
             var jsonString = request.downloadHandler.text.ToString();
             LoginResponModel loginResponModel = JsonConvert.DeserializeObject<LoginResponModel>(jsonString);
-            Debug.Log(loginResponModel.age);
-            SceneManager.LoadScene("Screen 1");
+            Debug.Log(loginResponModel.name);
+
+            //   txtError.text = loginResponModel.age.ToString();
+            SceneManager.LoadScene("Screen1");
             //  LoginResponModel loginResponModel = JsonConvert.DeserializeObject<LoginResponModel>(jsonString);
             // Debug.Log(loginResponModel);
             //  if (loginResponModel.id != null)
