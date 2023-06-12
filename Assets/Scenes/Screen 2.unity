@@ -243,7 +243,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1574,8 +1574,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474329104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.237, y: 0.046, z: 0}
-  m_LocalScale: {x: 3.183077, y: 2.2253723, z: 1}
+  m_LocalPosition: {x: -0.047, y: 0.046, z: 0}
+  m_LocalScale: {x: 3.687093, y: 2.2253723, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 68248560}
@@ -1960,7 +1960,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827667502}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &827667504
 Camera:
   m_ObjectHideFlags: 0
@@ -2031,9 +2031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f5b2c892c3c91448865b88f902d082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 0
-  right: 250
-  player: {fileID: 68248554}
 --- !u!114 &827667507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2075,7 +2072,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827667502}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 947e10f144dde9c49a9d8988e1b13644, type: 3}
