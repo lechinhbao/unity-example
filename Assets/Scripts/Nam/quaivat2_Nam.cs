@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class quaivat2 : MonoBehaviour
+public class quaivat2_Nam : MonoBehaviour
 {
     public float start, end;
     private bool isRight; //check
