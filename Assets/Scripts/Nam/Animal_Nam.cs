@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class quaivat3 : MonoBehaviour
+public class Animal_Nam : MonoBehaviour
 {
     public float start, end;
-    private bool isRight; //check
+    private bool isRight; //true -> di chuyen phai false di chuyen ben trai
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -16,65 +16,60 @@ public class quaivat3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //vi tri cua quaivat
-        var positionBug = transform.position.x;
+        //Di chuyển 
+        var positionEnemy = transform.position.x;
 
-        //quai vat di theo
+        //Di chuyen theo player
         if (player != null)
         {
-            var positionplayer = player.transform.position.x;
-            if (positionplayer > start && positionplayer < end)
+            var positionPlayer = player.transform.position.x;
+            if (positionPlayer > start && positionPlayer < end)
             {
-                if (positionplayer < positionBug) isRight = false;
-                if (positionplayer > positionBug) isRight = true;
+                if (positionPlayer < positionEnemy) isRight = false;
+                if (positionPlayer > positionEnemy) isRight = true;
+
             }
         }
-
-        if (positionBug < start)
+        if (positionEnemy < start)
         {
             isRight = true;
         }
-        if (positionBug > end)
+        if (positionEnemy > end)
         {
             isRight = false;
         }
 
         Vector2 scale = transform.localScale;
-
         if (isRight)
         {
-            //vector3
-            scale.x = 0.5f;
+            scale.x = -1;
             transform.Translate(Vector3.right * 2f * Time.deltaTime);
         }
         else
         {
-            scale.x = -0.5f;
+            scale.x = 1;
             transform.Translate(Vector3.left * 2f * Time.deltaTime);
         }
         transform.localScale = scale;
     }
-   /* public void OnTriggerEnter2D(Collider2D collider)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        //cham quay dau
-        if (collider.gameObject.tag == "trai")
+        if (collider.gameObject.tag == "Left")
         {
-            isRight = isRight ? false : true;
+            //isRight = isRight ? false : true;
+            isRight = !isRight;
         }
-    }*/
+    }
     public void SetStart(float start)
     {
         this.start = start;
     }
-
     public void SetEnd(float end)
     {
         this.end = end;
     }
-
     public void SetPlayer(GameObject player)
     {
         this.player = player;
     }
 }
-

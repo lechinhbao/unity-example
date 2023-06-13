@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraScripts : MonoBehaviour
+public class CameraScripts_Nam : MonoBehaviour
 {
     public float left, right;
     public GameObject player;

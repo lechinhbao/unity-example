@@ -8,7 +8,7 @@ using UnityEditor;
 using Unity.VisualScripting;
 using TMPro;
 
-public class Player : MonoBehaviour
+public class Player_Nam : MonoBehaviour
 {
     //Máu
         public Slider slider;
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
                 new Vector3(x, y, z),
                 Quaternion.identity
                 );
-            gameObject.GetComponent<BulletScript>().setIsRight(isRight);
+            gameObject.GetComponent<BulletScript_Nam>().setIsRight(isRight);
 
         }
 
