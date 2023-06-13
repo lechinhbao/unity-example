@@ -16,7 +16,7 @@ public class BulletScript : MonoBehaviour
     {
         //Di chuyển đạn
 
-        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 5f );
+        transform.Translate((isRight ? Vector3.right : Vector3.left) * Time.deltaTime * 5f);
 
     }
     public void setIsRight(bool isRight)
@@ -25,7 +25,7 @@ public class BulletScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Destroy")
+        if (collision.gameObject.tag == "Destroy")
         {
             //Kill đạn
             Destroy(gameObject);
@@ -33,5 +33,14 @@ public class BulletScript : MonoBehaviour
         var name = collision.attachedRigidbody.name;
         Destroy(GameObject.Find(name));
     }
- 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Destroy")
+        { // kiểm tra nếu va chạm với Obstacle
+            GetComponent<Animator>().SetTrigger("Bullet"); // chuyển sang trạng thái Animation biến mất
+        }
+    }
+
 }
+
+

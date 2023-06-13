@@ -12,6 +12,8 @@ TagManager:
   - die
   - quaivat2
   - quaivat3
+  - Next
+  - Brick
   layers:
   - Default
   - TransparentFX

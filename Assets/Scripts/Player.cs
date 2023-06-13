@@ -10,6 +10,10 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    //Máu
+        public Slider slider;
+    public HealthBar healthBar;
+
     private float speed;
     public new Rigidbody2D rigidbody2D;
     private bool isRight = true;
@@ -121,6 +125,10 @@ public class Player : MonoBehaviour
         {
             isJump = false;
         }
+        if (name.Equals("Next"))
+        {
+            SceneManager.LoadScene("Screen 2");
+        }
 
     }
 
@@ -161,5 +169,15 @@ public class Player : MonoBehaviour
         // Người chơi tự biến mất
         gameObject.SetActive(false);
     }
+    //Máu
+    public void SetMaxHealth(int health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+    }
 
+    public void SetHealth(int health)
+    {
+        slider.value = health;
+    }
 }
